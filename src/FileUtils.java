@@ -12,7 +12,8 @@ public class FileUtils {
             BusFactory busFactory = new BusFactory();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                busFactory.getBus(line);
+                Bus bus = busFactory.getBus(line);
+                busRepository.addBas(bus);
             }
         }
         return busRepository;

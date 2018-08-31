@@ -10,10 +10,16 @@ public class Main {
         BusRepository busRepository = null;
         try {
             busRepository = FileUtils.parseInputFile(filePath);
+            showBuses(busRepository);
             FileUtils.writeRepositoryToFile(busRepository, OUTPUT_FILE_NAME);
         } catch (FileNotFoundException | ParseException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void showBuses(BusRepository busRepository) {
+        for (Bus bus : busRepository.getBuses()) {
+            System.out.println(bus.toString());
+        }
     }
 }

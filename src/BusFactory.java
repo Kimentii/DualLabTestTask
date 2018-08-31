@@ -3,10 +3,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class BusFactory {
+    private static final String TIME_FORMAT = "HH:mm";
+
     public Bus getBus(String busDescription) throws ParseException {
         String[] busInfoStrs = busDescription.split(" ");
         String busName = busInfoStrs[0];
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TIME_FORMAT);
         Calendar departureTime = Calendar.getInstance();
         departureTime.setTime(simpleDateFormat.parse(busInfoStrs[1]));
         Calendar arrivalTime = Calendar.getInstance();
