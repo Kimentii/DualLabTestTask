@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class TripTimeValidator implements Validator {
+public class ServiceTimeSizeValidator implements Validator {
     private static final long MS_PER_HOUR = 3_600_000;
 
     @Override

@@ -1,6 +1,6 @@
 import java.util.Calendar;
 
-public abstract class Bus {
+public abstract class Bus implements Comparable<Bus> {
     private static final String TIME_FORMAT = "%02d:%02d";
 
     private String busName;
@@ -11,6 +11,17 @@ public abstract class Bus {
         this.busName = busName;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+    }
+
+    @Override
+    public int compareTo(Bus otherBus) {
+        if (departureTime.compareTo(otherBus.getDepartureTime()) != 0) {
+            return departureTime.compareTo(otherBus.getDepartureTime());
+        }
+        if (arrivalTime.compareTo(otherBus.getArrivalTime()) != 0) {
+            return arrivalTime.compareTo(otherBus.getArrivalTime());
+        }
+        return 0;
     }
 
     @Override
@@ -27,6 +38,7 @@ public abstract class Bus {
                 .append(" ");
         return stringBuilder.toString();
     }
+
 
     public String getBusName() {
         return busName;
