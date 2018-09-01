@@ -1,4 +1,9 @@
-import java.io.FileNotFoundException;
+package main;
+
+import buses.Bus;
+import repositories.BusRepository;
+import utils.FileUtils;
+
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -7,7 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
         String filePath = args[0];
-        System.out.println("File path: " + filePath);
         BusRepository busRepository = null;
         try {
             busRepository = FileUtils.parseInputFile(filePath);
@@ -19,7 +23,7 @@ public class Main {
     }
 
     public static void showBuses(BusRepository busRepository) {
-        for (Bus bus : busRepository.getBuses()) {
+        for (Bus bus : busRepository.getValidatedBuses()) {
             System.out.println(bus.toString());
         }
     }

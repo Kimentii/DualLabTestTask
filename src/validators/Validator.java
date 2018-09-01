@@ -1,3 +1,7 @@
+package validators;
+
+import buses.Bus;
+
 import java.util.ArrayList;
 
 public interface Validator {

@@ -1,3 +1,10 @@
+package repositories;
+
+import buses.Bus;
+import validators.EfficiencyValidator;
+import validators.ServiceTimeSizeValidator;
+import validators.Validator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,7 +22,7 @@ public class BusRepository {
         buses.add(bus);
     }
 
-    public ArrayList<Bus> getBuses() {
+    public ArrayList<Bus> getValidatedBuses() {
         ArrayList<Bus> validatedBuses = new ArrayList<>();
         for (Bus b : buses) {
             if (canBeAdded(b)) {
@@ -27,7 +34,7 @@ public class BusRepository {
 
     public <T extends Bus> ArrayList<T> getTypedBuses(Class<T> busClass) {
         ArrayList<T> typedBuses = new ArrayList<>();
-        for (Bus b : buses) {
+        for (Bus b : getValidatedBuses()) {
             if (b.getClass().equals(busClass)) {
                 typedBuses.add((T) b);
             }
@@ -39,7 +46,7 @@ public class BusRepository {
     private boolean canBeAdded(Bus bus) {
         for (Validator v : validators) {
             if (!v.canBeAdded(buses, bus)) {
-                // System.out.println("Can't be added because of " + v.getClass().getSimpleName());
+                //System.out.println("Was not added: " + bus.toString() + ", because" + v.getClass().getSimpleName());
                 return false;
             }
         }

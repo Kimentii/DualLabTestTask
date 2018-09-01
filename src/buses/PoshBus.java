@@ -1,3 +1,5 @@
+package buses;
+
 import java.util.Calendar;
 
 public class PoshBus extends Bus {
