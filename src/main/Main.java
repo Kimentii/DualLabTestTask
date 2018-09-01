@@ -15,16 +15,9 @@ public class Main {
         BusRepository busRepository = null;
         try {
             busRepository = FileUtils.parseInputFile(filePath);
-            showBuses(busRepository);
             FileUtils.writeRepositoryToFile(busRepository, OUTPUT_FILE_NAME);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public static void showBuses(BusRepository busRepository) {
-        for (Bus bus : busRepository.getValidatedBuses()) {
-            System.out.println(bus.toString());
         }
     }
 }

@@ -46,7 +46,6 @@ public class BusRepository {
     private boolean canBeAdded(Bus bus) {
         for (Validator v : validators) {
             if (!v.canBeAdded(buses, bus)) {
-                //System.out.println("Was not added: " + bus.toString() + ", because" + v.getClass().getSimpleName());
                 return false;
             }
         }
