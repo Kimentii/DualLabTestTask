@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
             busRepository = FileUtils.parseInputFile(filePath);
             showBuses(busRepository);
             FileUtils.writeRepositoryToFile(busRepository, OUTPUT_FILE_NAME);
-        } catch (FileNotFoundException | ParseException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
